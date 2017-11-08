@@ -1,21 +1,31 @@
-import { observable, action, computed } from 'mobx'
+import { observable, action, computed ,toJS} from 'mobx'
 import uuid from 'uuid'
+import _ from 'lodash'
 
 const ID_NAME = '_id'
 
 export class BaseModel {
 
-  isNew = true
+  isNew = false
   id = null
   store = null
+
+  @observable saving = false
+  @observable saved = false
+  @observable removing = false
+  @observable removed = false
+  @observable fetching = false
+  @observable fetched = false
 
   data = observable.map({})
 
   constructor(store, data) {
     this.store = store
-    this.id = data[this.getIdName()]
-    this.data = data
-    if (!this.id) {
+    this.id = _.get(data, this.getIdName(), null)
+    
+    this.merge(data)
+
+    if (this.id === null) {
       this.isNew = true
       this.id = uuid.v4()
     }
@@ -52,8 +62,44 @@ export class BaseModel {
     return data
   }
 
+  @computed
+  get toPlainObject(){
+    return toJS(this.data)
+  }
+
+  @action
   save() {
     if (!this.store) throw new Error('Store is required!')
+
+    this.saving = true
+    this.saved = false
+
     return this.store.save(this)
+      .then(action(model => {
+        this.saving = false
+        this.saved = true
+        
+        return model
+      }), action(e => {
+        this.saving = false
+        return e
+      }))
+  }
+
+  @action
+  remove() {
+    if (!this.store) throw new Error('Store is required!')
+    this.removing = true
+    this.removed = false
+
+    return this.store.remove(this)
+      .then(action(() => {
+        this.removing = false
+        this.removed = true
+        return {}
+      }), action((e) => {
+        this.removing = false
+        return e
+      }))
   }
 }

@@ -1,0 +1,19 @@
+# Changelogs
+
+#0.1.0
+- Added remove on collection
+- Added remove on model
+- Added findWhere for local data searching
+- Added findAllWhere for searching all local data
+- Add test spec for collection and model
+
+#0.0.3
+- Added model event for saving,removing, and fetching
+
+#0.0.2
+- Added ignores files
+- Added build scripts
+- Update npm packages
+
+#0.0.1
+- initial commit

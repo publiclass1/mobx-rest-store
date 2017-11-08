@@ -1,21 +1,22 @@
 export class ApiModel {
-  get(id) {
+
+  get(id) {// eslint-disable-line
     return Promise.resolve({})
   }
 
-  find(queryString) {
+  find(params) {// eslint-disable-line
     return Promise.resolve([])
   }
 
-  create(data) {
+  create(data) {// eslint-disable-line
     return Promise.resolve({})
   }
 
-  update(id, data) {
+  update(id, data) {// eslint-disable-line
     return Promise.resolve({})
   }
 
-  remove(id) {
+  remove(id) {// eslint-disable-line
     return Promise.resolve({})
   }
 }
