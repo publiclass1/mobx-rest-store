@@ -1,8 +1,8 @@
 {
   "name": "mobx-rest-store",
-  "version": "0.0.2",
+  "version": "0.0.2-rc1",
   "description": "a mobx model and collection",
-  "main": "build",
+  "main": "build/index.js",
   "directories": {
     "src": "src"
   },
