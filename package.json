@@ -1,14 +1,14 @@
 {
   "name": "mobx-rest-store",
-  "version": "0.0.2-rc2",
+  "version": "0.0.2-rc3",
   "description": "a mobx model and collection",
-  "main": "build/index.js",
+  "main": "lib",
   "directories": {
     "src": "src"
   },
   "scripts": {
     "build": "npm run clean && npm run build:babel",
-    "build:babel": "./node_modules/.bin/babel -d ./build ./src --ignore '**/__tests__/**'",
+    "build:babel": "./node_modules/.bin/babel -d ./lib ./src --ignore '**/__tests__/**'",
     "clean": "rimraf ./build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
