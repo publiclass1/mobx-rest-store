@@ -21,9 +21,9 @@
     "mobx",
     "model",
     "collection",
-    "mobx-collection",
-    "mobx-model",
-    "generic-mobx-model"
+    "rest",
+    "rest-model",
+    "rest-collection"
   ],
   "author": "Ralph Menguito <publiclass1@gmail.com>",
   "license": "MIT",

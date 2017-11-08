@@ -1,2 +1,6 @@
 src/
 .babelrc
+.editorconfig
+.gitignore
+.eslintrc.js
+.jsconfig.js
