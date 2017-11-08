@@ -1,6 +1,6 @@
 {
   "name": "mobx-rest-store",
-  "version": "beta0.0.2",
+  "version": "0.0.2",
   "description": "a mobx model and collection",
   "main": "build",
   "directories": {
