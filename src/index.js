@@ -1,11 +1,4 @@
-import { ApiModel } from './api-model'
-import { BaseModel } from './model'
-import { Collection } from './collection'
-import { AxiosTransportApi } from './default-axios-transport'
-
-export default {
-  ApiModel,
-  BaseModel,
-  Collection,
-  AxiosTransportApi
-}
+export { ApiModel } from './api-model'
+export { BaseModel } from './model'
+export { Collection } from './collection'
+export { AxiosTransportApi } from './default-axios-transport'
