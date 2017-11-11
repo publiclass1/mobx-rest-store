@@ -13,7 +13,7 @@ export class AxiosTransportApi extends ApiModel {
 
   api() {
     return axios.create({
-      baseUrl: this.baseUrl,
+      baseURL: this.baseUrl,
       timeout: 25000
     })
   }

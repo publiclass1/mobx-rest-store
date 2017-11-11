@@ -1,4 +1,4 @@
-import { observable, action, toJS, computed } from 'mobx'
+import { observable, action, computed } from 'mobx'
 import { BaseModel } from './model'
 import { ApiModel } from './api-model'
 import _ from 'lodash'
@@ -58,7 +58,7 @@ export class Collection {
         return Promise.resolve(model)
       }
     }
-    
+
     return this.api.get(id).then(action(data => {
       const model = this.build(data)
       return model
