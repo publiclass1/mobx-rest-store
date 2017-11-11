@@ -54,7 +54,7 @@ export class Collection {
     let model = null
     if (!requestToServer) {
       model = this.findWhere({ [this.getIdName()]: id })
-      if(model){
+      if (model) {
         return Promise.resolve(model)
       }
     }
@@ -66,7 +66,9 @@ export class Collection {
 
   }
 
+  @action
   fetch(params = {}) {
+    this.fetching = true
     return this.api.find(params)
       .then(action(rs => {
         let models = []
@@ -75,7 +77,12 @@ export class Collection {
             this.build(rs[k])
           )
         }
+        this.fetching = false
+        this.fetched = true
         return models
+      })).catch(action(e => {
+        this.fetching = false
+        this.fetched = false
       }))
   }
 

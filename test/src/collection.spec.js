@@ -42,23 +42,30 @@ describe('Collection', () => {
   })
 
   it('#fetch()', (done) => {
+    assert.equal(stores.fetching, false)
+    assert.equal(stores.fetched, false)
 
-    stores.fetch().then(models => {
+    const promise = stores.fetch();
+
+    assert.equal(stores.fetching, true)
+
+    promise.then(models => {
       //not empty
       assert.notEqual(models, [])
 
       //2 is the current sample data
       assert.equal(stores.models.length, 2)
-
+      assert.equal(stores.fetched, true)
+      assert.equal(stores.fetching, false)
       done()
     }).catch(e => {
       done(e)
     })
   })
 
-  it('#getIdName()', ()=>{
+  it('#getIdName()', () => {
     const model = new stores.model(stores, {})
-    assert.equal( stores.getIdName(), model.getIdName())
+    assert.equal(stores.getIdName(), model.getIdName())
   })
 
   it('#get(id)', done => {
