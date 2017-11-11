@@ -32,7 +32,7 @@ describe('Collection', () => {
   }
 
   it('#build()', () => {
-    const model = stores.build({_id: 20, name: 'jhon cena' })
+    const model = stores.build({ _id: 20, name: 'jhon cena' })
 
     assert.equal(model.isNew, false)
     assert.equal(model.get('name'), 'jhon cena')
@@ -56,23 +56,36 @@ describe('Collection', () => {
     })
   })
 
+  it('#getIdName()', ()=>{
+    const model = new stores.model(stores, {})
+    assert.equal( stores.getIdName(), model.getIdName())
+  })
+
+  it('#get(id)', done => {
+    stores.get(1).then(model => {
+      assert.equal(model.id, 1)
+      assert.equal(model.get('name'), 'john')
+      done()
+    }).catch(e => done(e))
+  })
+
   it('#findWhere', (done) => {
     stores.fetch().then(() => {
-      const model = stores.findWhere({_id: 1})
-      
+      const model = stores.findWhere({ _id: 1 })
+
       assert.equal(model.id, 1)
       done()
-    }).catch(e=> done(e))
+    }).catch(e => done(e))
   })
 
   it('#findAllWhere', (done) => {
     stores.fetch().then(() => {
-      const models = stores.findAllWhere({ level: 1})
+      const models = stores.findAllWhere({ level: 1 })
 
       //2 is the current sample data has a level 1
-      assert.equal(models.length, 2) 
+      assert.equal(models.length, 2)
       done()
-    }).catch(e=> done(e))
+    }).catch(e => done(e))
   })
 
 

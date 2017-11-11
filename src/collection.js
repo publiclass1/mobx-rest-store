@@ -13,6 +13,12 @@ export class Collection {
   model = BaseModel
   api = new ApiModel()
 
+
+  getIdName() {
+    const model = new this.model(this, {})
+    return model.getIdName()
+  }
+
   build(data) {
     let model = new this.model(this, data)
 
@@ -33,21 +39,31 @@ export class Collection {
 
   @action
   findWhere(predicate) {
-    const dataList =this.models
-    return _.find(dataList, (dl)=> _.isMatch(dl.toPlainObject,predicate))
+    const dataList = this.models
+    return _.find(dataList, (dl) => _.isMatch(dl.toPlainObject, predicate))
   }
 
   findAllWhere(predicate) {
     const dataList = this.models
-    return _.filter(dataList, (dl)=> _.isMatch(dl.toPlainObject,predicate))
+    return _.filter(dataList, (dl) => _.isMatch(dl.toPlainObject, predicate))
   }
 
   @action
-  get(id) {
+  get(id, requestToServer = false) {
+
+    let model = null
+    if (!requestToServer) {
+      model = this.findWhere({ [this.getIdName()]: id })
+      if(model){
+        return Promise.resolve(model)
+      }
+    }
+    
     return this.api.get(id).then(action(data => {
       const model = this.build(data)
       return model
     }))
+
   }
 
   fetch(params = {}) {

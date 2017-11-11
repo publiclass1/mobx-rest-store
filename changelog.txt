@@ -1,5 +1,9 @@
 # Changelogs
 
+#0.1.1
+- Add get(modelID) on Collection
+- Add getIdName on Collection
+
 #0.1.0
 - Added remove on collection
 - Added remove on model
