@@ -1,6 +1,9 @@
 # Changelogs
 
 #0.1.2
+- Add fetching event on collection
+
+#0.1.2
 - Fixed axios baseURL
 
 #0.1.1
