@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/publiclass1/mobx-rest-store.svg?branch=master)](https://travis-ci.org/publiclass1/mobx-rest-store)
+
 # mobx-rest-store
 A mobx based collection and model inspired by backbonejs, and @mobx-rest
 
